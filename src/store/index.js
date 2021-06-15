@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { createStore } from 'redux';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const initialState = { counter: 0, showCounter: true };
 
@@ -63,6 +62,15 @@ const counterSlice = createSlice({
 // store.dispatch({ type: 'increment' });
 // store.dispatch({ type: 'decrement' });
 
-const store = createStore(counterSlice.reducer);
+const store = configureStore({
+  reducer: counterSlice.reducer,
+});
+
+// can also do something like =>
+// const store = configureStore({
+//   reducer: {
+//     counter: counterSlice.reducer,
+//   },
+// });
 
 export default store;
